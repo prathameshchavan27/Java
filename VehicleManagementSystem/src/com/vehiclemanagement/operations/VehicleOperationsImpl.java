@@ -27,10 +27,10 @@ public class VehicleOperationsImpl implements VehicleOperations {
 	
 	@Override
 	public void addVehicle(int chasisNo,double price, double discount,String color,String manufacturedDate) throws VehicleException {
-		LocalDate date = LocalDate.parse(manufacturedDate);
 		Color c = Color.valueOf(color.toUpperCase());
 		validateDuplicate(chasisNo,vehicles);
 		validatePrice(price);
+		LocalDate date = validateManufacturedDate(manufacturedDate);
 		vehicles.put(chasisNo, new Vehicle(chasisNo, price, discount,c, date));
 		System.out.println("Added vehicle");
 	}
